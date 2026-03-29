@@ -717,15 +717,6 @@ function refreshDash(){
 }
 
 function init(){refreshDash();renderItinEditor([]);renderHotelEditor([]);}
-
-function fixUnsplashUrl(url){
-  if(!url||!url.trim())return'';
-  url=url.trim();
-  if(!url.startsWith('http')&&url.startsWith('photo-'))url='https://images.unsplash.com/'+url;
-  if(url.includes('unsplash.com')&&!url.includes('?'))url+='?w=800&q=80';
-  if(url.includes('unsplash.com')&&url.includes('?')&&!url.includes('q='))url+='&q=80';
-  return url;
-}
 </script>
 </body>
 </html>
