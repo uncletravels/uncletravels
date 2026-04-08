@@ -162,6 +162,7 @@ input:checked+.sl::before{transform:translateX(18px)}
     <div class="ni" onclick="showPage('pkgs',this)"><span class="ic">🗺️</span>Tour Packages</div>
     <div class="ni" onclick="showPage('popup',this)"><span class="ic">🔔</span>Promo Popup</div>
     <div class="ni" onclick="showPage('leads',this)"><span class="ic">📋</span>Enquiries</div>
+    <div class="ni" onclick="showPage('groups',this)"><span class="ic">🚌</span>Group Departures</div>
     <div class="sb-footer">
       <div>Logged in as <strong>Admin</strong></div>
       <div style="font-size:.69rem;margin:3px 0 9px">Uncle Travels © 2025</div>
@@ -315,6 +316,38 @@ input:checked+.sl::before{transform:translateX(18px)}
 </div>
 <div class="toast" id="toast"></div>
 
+    <!-- GROUP DEPARTURES -->
+    <div class="page" id="page-groups">
+      <div class="ph"><h1>Group Departures</h1><p>Manage fixed-date group tour departures shown in the Group Departures section on the website.</p></div>
+      <div class="card">
+        <div class="sec-ttl">➕ Add Group Departure</div>
+        <div class="fgrid">
+          <div class="fg"><label>Package Name *</label><input type="text" id="gn" placeholder="e.g. Kashmir Group Tour"/></div>
+          <div class="fg"><label>Destination Type</label><select id="gt"><option value="domestic">🇮🇳 Domestic</option><option value="international">🌍 International</option></select></div>
+          <div class="fg"><label>Departure Date *</label><input type="date" id="gdep"/></div>
+          <div class="fg"><label>Return Date</label><input type="date" id="gret"/></div>
+          <div class="fg"><label>Duration</label><input type="text" id="gdur" placeholder="e.g. 5N/6D"/></div>
+          <div class="fg"><label>Price (per person)</label><input type="text" id="gprice" placeholder="e.g. ₹15,000"/></div>
+          <div class="fg"><label>Seats Available</label><input type="number" id="gseats" min="1" placeholder="e.g. 20"/></div>
+          <div class="fg"><label>Hotel Category</label><select id="ghcat"><option>Budget (1-2 Star)</option><option selected>Standard (3 Star)</option><option>Superior (4 Star)</option><option>Luxury (5 Star)</option></select></div>
+          <div class="fg full"><label>Tagline / Highlights</label><input type="text" id="gtag" placeholder="e.g. Guided · All Inclusive · Expert Leaders"/></div>
+          <div class="fg full"><label>Image URL</label><input type="text" id="gimg" placeholder="https://images.unsplash.com/..."/></div>
+          <div class="fg full"><label>Inclusions (one per line)</label><textarea id="ginc" placeholder="Return airfare&#10;5 nights hotel&#10;All meals included&#10;Expert tour leader" style="min-height:80px"></textarea></div>
+          <div class="fg full"><label>Itinerary Summary</label><textarea id="gitin" placeholder="Brief day-wise overview..." style="min-height:80px"></textarea></div>
+          <div class="fg full"><label>Terms & Conditions <span style="font-weight:400;font-size:.72rem;color:var(--tm)">(one per line)</span></label><textarea id="gterms" placeholder="Prices per person on twin sharing basis&#10;Min 10 pax required to confirm departure" style="min-height:80px"></textarea></div>
+          <div class="fg full"><label>Cancellation Policy <span style="font-weight:400;font-size:.72rem;color:var(--tm)">(one per line)</span></label><textarea id="gcancel" placeholder="30+ days: 10% charges&#10;Under 7 days: No refund" style="min-height:80px"></textarea></div>
+        </div>
+        <button class="badd" onclick="addGroup()" style="margin-top:12px">💾 Save Group Departure</button>
+      </div>
+      <div class="card">
+        <div class="sec-ttl">All Group Departures</div>
+        <div id="grp-tbl"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
 <script>
 // ===== AUTH =====
 const CREDS = btoa('admin:uncletravels2007');
@@ -372,6 +405,63 @@ function handleImgFile(ctx, input){
     if(ctx==='pp'){ ppImgData=data; const p=document.getElementById('pp-img-preview'); p.src=data; p.style.display='block'; document.getElementById('pp-upload-text').textContent='✅ Image loaded'; updatePreview(); }
   };
   reader.readAsDataURL(file);
+}
+
+// ===== GROUP DEPARTURES =====
+function getGroups(){return JSON.parse(localStorage.getItem('ut_groups')||'[]');}
+function saveGroups(g){localStorage.setItem('ut_groups',JSON.stringify(g));}
+
+function addGroup(){
+  var name=document.getElementById('gn').value.trim();
+  var dep=document.getElementById('gdep').value;
+  if(!name){alert('Package name required.');return;}
+  if(!dep){alert('Departure date required.');return;}
+  var grp={
+    id:Date.now(),
+    name:name,
+    type:document.getElementById('gt').value,
+    departureDate:dep,
+    returnDate:document.getElementById('gret').value,
+    duration:document.getElementById('gdur').value,
+    price:document.getElementById('gprice').value,
+    seats:document.getElementById('gseats').value,
+    hotelCategory:document.getElementById('ghcat').value,
+    tagline:document.getElementById('gtag').value,
+    img:fixUnsplashUrl(document.getElementById('gimg').value),
+    inclusions:document.getElementById('ginc').value.split('\n').map(s=>s.trim()).filter(Boolean),
+    itinerary:document.getElementById('gitin').value,
+    terms:document.getElementById('gterms').value,
+    cancellation:document.getElementById('gcancel').value,
+  };
+  var groups=getGroups();groups.unshift(grp);saveGroups(groups);
+  ['gn','gdep','gret','gdur','gprice','gseats','gtag','gimg','ginc','gitin','gterms','gcancel'].forEach(id=>document.getElementById(id).value='');
+  renderGroupTbl();
+  toast('✅ Group departure added!');
+}
+
+function delGroup(id){
+  if(!confirm('Delete this group departure?'))return;
+  saveGroups(getGroups().filter(g=>g.id!=id));
+  renderGroupTbl();
+  toast('🗑 Deleted.');
+}
+
+function renderGroupTbl(){
+  var groups=getGroups();
+  var el=document.getElementById('grp-tbl');
+  if(!el)return;
+  if(!groups.length){el.innerHTML='<div class="empty">No group departures yet. Add one above.</div>';return;}
+  el.innerHTML='<table><thead><tr><th>Package</th><th>Departure</th><th>Return</th><th>Duration</th><th>Price</th><th>Seats</th><th>Type</th><th>Action</th></tr></thead><tbody>'+
+    groups.map(g=>`<tr>
+      <td><strong>${g.name}</strong><br><span style="font-size:.74rem;color:var(--tm)">${g.tagline||''}</span></td>
+      <td>${g.departureDate?new Date(g.departureDate).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'—'}</td>
+      <td>${g.returnDate?new Date(g.returnDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'—'}</td>
+      <td>${g.duration||'—'}</td>
+      <td>${g.price||'—'}</td>
+      <td>${g.seats||'—'}</td>
+      <td><span class="bdg ${g.type==='domestic'?'bdg-d':'bdg-i'}">${g.type==='domestic'?'🇮🇳':'🌍'}</span></td>
+      <td><button class="bdel" onclick="delGroup(${g.id})">Delete</button></td>
+    </tr>`).join('')+'</tbody></table>';
 }
 
 function fixUnsplashUrl(url){
