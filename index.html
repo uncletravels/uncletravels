@@ -270,6 +270,65 @@ footer{background:var(--ink);color:rgba(255,255,255,.44);padding:50px 5% 25px}
 .hero-content>*:nth-child(3){animation-delay:.22s}
 .hero-content>*:nth-child(4){animation-delay:.30s}
 .hero-content>*:nth-child(5){animation-delay:.38s}
+
+/* ===== CREATIVE PACKAGE PAGE ===== */
+.pdp-tabs-nav{display:flex;gap:0;border-bottom:2px solid rgba(139,107,61,.12);margin-bottom:28px;overflow-x:auto}
+.pdp-tab-btn{padding:11px 18px;font-size:.82rem;font-weight:700;color:var(--textMid);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:color .2s,border-color .2s}
+.pdp-tab-btn.active{color:var(--earth);border-bottom-color:var(--earth)}
+.pdp-tab-pane{display:none}.pdp-tab-pane.active{display:block}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#F5A623,#E8497A)}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-dot{position:absolute;left:-23px;top:4px;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,#F5A623,#E8497A);border:2px solid var(--white);box-shadow:0 0 0 2px rgba(245,166,35,.3)}
+.tl-day{font-size:.72rem;font-weight:800;color:var(--earth);letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.tl-title{font-size:.95rem;font-weight:700;margin-bottom:5px;color:var(--ink)}
+.tl-desc{font-size:.83rem;color:var(--textMid);line-height:1.7}
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.inc-chip{display:flex;align-items:center;gap:8px;background:rgba(45,203,117,.08);border:1px solid rgba(45,203,117,.18);border-radius:8px;padding:8px 12px;font-size:.82rem;color:#1a7a3a}
+.inc-chip::before{content:'✓';font-weight:800;color:#2DCB75;flex-shrink:0}
+.exc-chip{display:flex;align-items:center;gap:8px;background:rgba(232,69,69,.06);border:1px solid rgba(232,69,69,.15);border-radius:8px;padding:8px 12px;font-size:.82rem;color:#7a1a1a}
+.exc-chip::before{content:'✗';font-weight:800;color:#E84545;flex-shrink:0}
+.hotel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hotel-chip{background:var(--sand);border-radius:10px;padding:14px 16px;border:1px solid rgba(139,107,61,.1)}
+.hotel-chip h4{font-size:.86rem;font-weight:800;margin-bottom:4px}
+.hotel-chip p{font-size:.78rem;color:var(--textMid)}
+.bullet-list{list-style:none;padding:0}
+.bullet-list li{position:relative;padding-left:18px;font-size:.85rem;color:var(--textMid);line-height:1.7;margin-bottom:6px}
+.bullet-list li::before{content:'•';position:absolute;left:0;color:var(--earth);font-weight:800}
+.pdp-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,11,9,.9) 0%,rgba(13,11,9,.3) 50%,rgba(13,11,9,.1) 100%)}
+.pdp-breadcrumb{position:absolute;top:20px;left:5%;display:flex;align-items:center;gap:8px;font-size:.78rem;color:rgba(255,255,255,.7);z-index:10}
+.pdp-breadcrumb button{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 14px;color:#fff;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;display:flex;align-items:center;gap:5px}
+.pdp-breadcrumb button:hover{background:rgba(255,255,255,.22)}
+.pdp-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.pdp-tag-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:4px 11px;font-size:.73rem;font-weight:700;color:#fff}
+.quick-facts{display:flex;gap:0;background:var(--white);border-radius:14px;overflow:hidden;border:1px solid rgba(139,107,61,.12);margin-bottom:24px}
+.qf-item{flex:1;padding:14px 12px;text-align:center;border-right:1px solid rgba(139,107,61,.1)}
+.qf-item:last-child{border-right:none}
+.qf-icon{font-size:1.2rem;margin-bottom:4px}
+.qf-val{font-size:.88rem;font-weight:800;color:var(--ink);display:block}
+.qf-lbl{font-size:.68rem;color:var(--textMid);text-transform:uppercase;letter-spacing:.5px}
+/* GROUP DEPARTURES SECTION */
+#group-dep{background:linear-gradient(135deg,#0D0B09 0%,#1E1A14 100%)}
+.group-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.grp-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer}
+.grp-card:hover{border-color:rgba(245,166,35,.35);transform:translateY(-3px)}
+.grp-img{height:180px;overflow:hidden;position:relative}
+.grp-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.grp-card:hover .grp-img img{transform:scale(1.05)}
+.grp-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,11,9,.7) 0%,transparent 60%)}
+.grp-dep-badge{position:absolute;bottom:10px;left:10px;background:linear-gradient(135deg,#F5A623,#E8497A);color:#fff;font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:50px;z-index:1}
+.grp-body{padding:16px 16px 18px}
+.grp-body h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:5px}
+.grp-body p{font-size:.78rem;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5}
+.grp-meta{display:flex;justify-content:space-between;align-items:center}
+.grp-price{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;background:linear-gradient(135deg,#F5A623,#E8497A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.grp-seats{font-size:.72rem;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);padding:3px 9px;border-radius:50px}
+@media(max-width:900px){
+  .group-grid,.inc-grid,.hotel-grid{grid-template-columns:1fr}
+  .quick-facts{flex-wrap:wrap}
+  .qf-item{flex:1 0 40%;border-bottom:1px solid rgba(139,107,61,.1)}
+}
+  
 </style>
 </head>
 <body>
@@ -451,6 +510,18 @@ footer{background:var(--ink);color:rgba(255,255,255,.44);padding:50px 5% 25px}
   </div>
 </section>
 
+<!-- GROUP DEPARTURES -->
+<section id="group-dep">
+  <div style="text-align:center;max-width:600px;margin:0 auto">
+    <span class="sec-tag" style="color:#F5A623">Fixed Date Tours</span>
+    <h2 class="sec-h" style="color:#fff">Group <em>Departures</em></h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,.45);margin:0 auto">Join like-minded travellers on our expert-led group tours with fixed departure dates.</p>
+  </div>
+  <div class="group-grid" id="group-grid">
+    <div style="grid-column:span 3;text-align:center;padding:40px;color:rgba(255,255,255,.3);font-size:.9rem">No group departures scheduled yet. Check back soon!</div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div style="text-align:center;max-width:580px;margin:0 auto">
@@ -562,9 +633,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.44);padding:50px 5% 25px}
     <h2 class="sec-h">Voices of <em>Adventure</em></h2>
   </div>
   <div class="reviews-grid">
-    <div class="rv-card"><div class="stars">★★★★★</div><p>"Our Manali trip was flawlessly organised. The hotel, cab, sightseeing — everything was perfect. Uncle Travels really understood what we wanted!"</p><div class="reviewer"><div class="avatar">PR</div><div><div class="rvr-name">Priya Rathod</div><div class="rvr-loc">Pune, Maharashtra</div></div></div></div>
-    <div class="rv-card"><div class="stars">★★★★★</div><p>"Our Europe honeymoon was absolutely dreamy. Visa support, flights, hotels — handled end to end. Highly recommend Uncle Travels!"</p><div class="reviewer"><div class="avatar">AS</div><div><div class="rvr-name">Arjun & Sneha</div><div class="rvr-loc">Hyderabad, Telangana</div></div></div></div>
-    <div class="rv-card"><div class="stars">★★★★★</div><p>"Kerala backwaters trip was beyond expectations. The houseboat experience was magical. Team was responsive and caring throughout!"</p><div class="reviewer"><div class="avatar">RK</div><div><div class="rvr-name">Roshni Kulkarni</div><div class="rvr-loc">Nashik, Maharashtra</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"We booked our Singapore trip with Uncle Travels. Mr. Samyak planned the itinerary so well, allowing us to see all major sights while still having time to relax. Transportation was comfortable and reliable. Special thanks to our driver Mr. Richeard. Highly recommend Uncle Travels for a well-planned, stress-free vacation!"</p><div class="reviewer"><div class="avatar">SK</div><div><div class="rvr-name">Shrutika Kadam</div><div class="rvr-loc">Singapore Trip</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"Exceptional experience from start to finish. Airport transfers, hotels, sightseeing — all seamless. The best part was 24×7 support via Telegram. Whether it was a small question or a change in plans, the team responded almost immediately. Highly recommend UncleTravels for a hassle-free vacation!"</p><div class="reviewer"><div class="avatar">GP</div><div><div class="rvr-name">Gaurav Patel</div><div class="rvr-loc">Jan 2025</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"Had an amazing experience with Uncle Travels! The trip to Kerala was absolutely worth it. Every detail was taken care of and the team was wonderful throughout the journey."</p><div class="reviewer"><div class="avatar">DM</div><div><div class="rvr-name">Diya Mandesha</div><div class="rvr-loc">Kerala Trip</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"Exceptional service from Uncle Travels during our Europe trip! Seamless booking, personalised itinerary, and quick responses. Their attention to detail and professionalism made my trip completely stress-free and memorable. Highly recommend!"</p><div class="reviewer"><div class="avatar">AS</div><div><div class="rvr-name">Aditya Surana</div><div class="rvr-loc">Europe Trip</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"Booking with Uncle Travels was the best decision for our Vietnam tour. Their support, itinerary planning, and hotel bookings are top-notch. Will always keep Uncle Travels in mind for future trips!"</p><div class="reviewer"><div class="avatar">PJ</div><div><div class="rvr-name">Piyush Jain</div><div class="rvr-loc">Vietnam Trip</div></div></div></div>
+    <div class="rv-card"><div class="stars">★★★★★</div><p>"The Bali trip was super amazing! Uncle Travels handled all arrangements — hotels, bookings, transportation. They added ATV Ride, River Rafting, snorkelling, waterfall visits and water sports. We saw underwater statues, coral reef, turtles and colourful fishes. Overall a trip to remember — all thanks to Uncle Travels!"</p><div class="reviewer"><div class="avatar">KK</div><div><div class="rvr-name">Khushboo Kothari</div><div class="rvr-loc">Bali Trip</div></div></div></div>
   </div>
 </section>
 
@@ -997,6 +1071,90 @@ function submitEnquiry() {
   leads.unshift(entry); localStorage.setItem('ut_leads',JSON.stringify(leads));
   document.getElementById('form-fields').style.display='none';
   document.getElementById('form-success').style.display='block';
+}
+
+// ===== GROUP DEPARTURES =====
+function getGroups(){return JSON.parse(localStorage.getItem('ut_groups')||'[]');}
+
+function renderGroups() {
+  const groups = getGroups().filter(g => {
+    // Only show future departures
+    if(!g.departureDate) return true;
+    return new Date(g.departureDate) >= new Date(new Date().toDateString());
+  }).sort((a,b)=>new Date(a.departureDate)-new Date(b.departureDate));
+  const grid = document.getElementById('group-grid');
+  if(!grid) return;
+  if(!groups.length) {
+    grid.innerHTML='<div style="grid-column:span 3;text-align:center;padding:40px;color:rgba(255,255,255,.3);font-size:.9rem">No group departures scheduled. Check back soon!</div>';
+    return;
+  }
+  grid.innerHTML = groups.map(g => {
+    const img = g.img || DEFAULT_IMGS[Object.keys(DEFAULT_IMGS).find(k=>g.name.toLowerCase().includes(k))] || DEFAULT_IMGS.default;
+    const dep = g.departureDate ? new Date(g.departureDate).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : 'Date TBA';
+    return `<div class="grp-card" onclick="openGroupDetail(${g.id})">
+      <div class="grp-img">
+        <img src="${img}" alt="${g.name}" loading="lazy"/>
+        <span class="grp-dep-badge">✈ ${dep}</span>
+      </div>
+      <div class="grp-body">
+        <h3>${g.name}</h3>
+        <p>${g.tagline||g.duration||''}</p>
+        <div class="grp-meta">
+          <span class="grp-price">${g.price||'Call for Price'}</span>
+          ${g.seats?`<span class="grp-seats">👥 ${g.seats} seats</span>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openGroupDetail(id) {
+  const g = getGroups().find(x=>x.id==id);
+  if(!g) return;
+  window._currentPkg = {...g, isGroup:true};
+  _fromAllDest = false;
+  const img = g.img || DEFAULT_IMGS[Object.keys(DEFAULT_IMGS).find(k=>g.name.toLowerCase().includes(k))] || DEFAULT_IMGS.default;
+  document.getElementById('pdp-img').src = img;
+  document.getElementById('pdp-name').textContent = g.name;
+  document.getElementById('pdp-tagline').textContent = g.tagline||'';
+  document.getElementById('pdp-price-badge').textContent = g.price||'Call for Price';
+  const dep = g.departureDate ? new Date(g.departureDate).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) : '';
+  const ret = g.returnDate ? ' — '+new Date(g.returnDate).toLocaleDateString('en-IN',{day:'numeric',month:'long'}) : '';
+  document.getElementById('pdp-dur').textContent = dep ? ('📅 '+dep+ret) : (g.duration?'🕐 '+g.duration:'');
+  document.getElementById('pdp-breadcrumb-type').textContent = '🚌 Group Departure';
+  const tags=[];
+  if(g.duration) tags.push('🕐 '+g.duration);
+  if(g.hotelCategory) tags.push('🏨 '+g.hotelCategory);
+  if(g.seats) tags.push('👥 '+g.seats+' seats');
+  document.getElementById('pdp-tags').innerHTML=tags.map(t=>`<span class="pdp-tag-chip">${t}</span>`).join('');
+  document.getElementById('pdp-sb-name').textContent = g.name;
+  document.getElementById('pdp-sb-price').textContent = g.price||'Contact Us';
+  let meta='';
+  if(dep) meta+=`<span>📅 Departs: ${dep}</span><br>`;
+  if(g.hotelCategory) meta+=`<span>🏨 ${g.hotelCategory}</span>`;
+  document.getElementById('pdp-sb-meta').innerHTML=meta;
+  const qf=[];
+  if(dep) qf.push({icon:'📅',val:new Date(g.departureDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}),lbl:'Departure'});
+  if(g.duration) qf.push({icon:'🕐',val:g.duration,lbl:'Duration'});
+  if(g.seats) qf.push({icon:'👥',val:g.seats,lbl:'Seats'});
+  if(g.hotelCategory) qf.push({icon:'⭐',val:g.hotelCategory.split('(')[0].trim(),lbl:'Category'});
+  document.getElementById('pdp-quick-facts').innerHTML=qf.map(q=>`<div class="qf-item"><div class="qf-icon">${q.icon}</div><span class="qf-val">${q.val}</span><span class="qf-lbl">${q.lbl}</span></div>`).join('');
+  // Itinerary from summary text
+  const itinText = g.itinerary||'';
+  document.getElementById('pdp-itin').innerHTML = itinText
+    ? `<div class="tl-item"><div class="tl-dot"></div><div class="tl-desc" style="white-space:pre-line">${itinText}</div></div>`
+    : '<p style="color:var(--textMid);font-size:.88rem">Detailed itinerary will be shared upon booking confirmation.</p>';
+  const inc=g.inclusions||[];
+  document.getElementById('pdp-inc').innerHTML=inc.map(i=>`<div class="inc-chip">${i}</div>`).join('');
+  document.getElementById('pdp-exc').innerHTML='<div style="color:var(--textMid);font-size:.85rem;grid-column:span 2">Contact us for details on what is not included.</div>';
+  document.getElementById('pdp-hotels').innerHTML='<div style="color:var(--textMid);font-size:.85rem;grid-column:span 2">Hotel details provided upon booking confirmation.</div>';
+  function toBullets(txt){if(!txt)return '<li>Please contact us for details.</li>';return txt.split('\n').map(s=>s.trim()).filter(Boolean).map(s=>`<li>${s}</li>`).join('');}
+  document.getElementById('pdp-terms').innerHTML=toBullets(g.terms);
+  document.getElementById('pdp-cancel').innerHTML=toBullets(g.cancellation);
+  switchPdpTab('itinerary', document.querySelector('.pdp-tab-btn'));
+  document.getElementById('pkg-detail-page').style.display='block';
+  document.body.style.overflow='hidden';
+  document.getElementById('pkg-detail-page').scrollTop=0;
 }
 
 // Sticky nav
